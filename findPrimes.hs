@@ -11,4 +11,4 @@ findPrimes n
   | otherwise = (prevPrimes ++ [nextPrime])
   where prevPrimes = findPrimes (n-1)
         firstCandidate  = last prevPrimes
-        nextPrime = head [ candidate | candidate <- [firstCandidate+2,firstCandidate+4..], let notDivCand a = candidate `notDivBy` a ; in all notDivCand prevPrimes]
+        nextPrime = head [ candidate | candidate <- [firstCandidate+2,firstCandidate+4..], all (candidate `notDivBy`) prevPrimes ]
