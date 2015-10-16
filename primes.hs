@@ -6,12 +6,10 @@ import Data.List
 -- this isn't really safe as is
 primeFilter :: [Integer] -> [Integer]
 primeFilter [] = []
-primeFilter list@(x:xs)
-        | null list  = list
-        | otherwise  = x : (primeFilter $ filter stillValid xs)
-        where stillValid n = if n `mod` x == 0
-                             then False
-                             else True
+primeFilter list@(x:xs) = x : (primeFilter $ filter stillValid xs)
+                        where stillValid n = if n `mod` x == 0
+                                then False
+                                else True
 
 primes :: [Integer]
 primes = primeFilter [2..]
