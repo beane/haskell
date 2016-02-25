@@ -7,9 +7,7 @@ import Data.List
 primeFilter :: [Integer] -> [Integer]
 primeFilter [] = []
 primeFilter list@(x:xs) = x : (primeFilter $ filter stillValid xs)
-                        where stillValid n = if n `mod` x == 0
-                                then False
-                                else True
+                        where stillValid n = n `mod` x /= 0
 
 primes :: [Integer]
 primes = primeFilter [2..]
